@@ -33,7 +33,7 @@ while True:
         nItem = hero.findNearestItem()
     if enemy and enemy.type:
         if og and (hero.distanceTo(og) < 10) and skillChk("power-up"):
-            powerAtk(og)
+            pwrAtk(og)
             pass
         if nRanged and hero.distanceTo(nRanged) < 31:
             if skillChk("chain-lightning", nRanged):
