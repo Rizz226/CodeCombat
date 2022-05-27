@@ -1,7 +1,6 @@
 def Kill(e):
-    if e:
-        while e.health > 0:
-            hero.attack(e)
+    while e.health > 0:
+        hero.attack(e)
 
 def skillChk(skill, target):
     if hero.isReady(skill):
@@ -35,13 +34,10 @@ while True:
         if og and (hero.distanceTo(og) < 10) and skillChk("power-up"):
             pwrAtk(og)
             pass
-        if nRanged and hero.distanceTo(nRanged) < 31:
-            if skillChk("chain-lightning", nRanged):
-                hero.cast("chain-lightning", nRanged)
+        if nRanged and skillChk("chain-lightning", nRanged):
+            hero.cast("chain-lightning", nRanged)
         else:
-            hero.attack(enemy)
+            Kill(enemy)
     elif nItem:
         hero.moveXY(nItem.pos.x, nItem.pos.y)
-    else:
-        if enemy:
-            Kill(enemy)
+
