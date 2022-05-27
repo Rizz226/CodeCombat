@@ -11,6 +11,11 @@ def skillChk(skill, target):
     else:
         return False
 
+def pwrAtk(target):
+    hero.powerUp()
+    hero.attack(target)
+    
+    
 while True:
     nItem = hero.findNearestItem()
     enemy = hero.findNearestEnemy()
@@ -28,8 +33,7 @@ while True:
         nItem = hero.findNearestItem()
     if enemy and enemy.type:
         if og and (hero.distanceTo(og) < 10) and skillChk("power-up"):
-            hero.powerUp()
-            hero.attack(og)
+            powerAtk(og)
             pass
         if nRanged and hero.distanceTo(nRanged) < 31:
             if skillChk("chain-lightning", nRanged):
