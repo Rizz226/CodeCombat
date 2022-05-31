@@ -45,3 +45,12 @@ def search()
                 hero.moveXY(a, b)
             else:
                 hero.moveXY(g, h)
+
+# needs the variable included in the main function but outside of any "while" loops that'll update the pos.                
+def guardArea(a, b):
+    if hero.distanceTo(guard) > 10:
+        hero.moveXY(a, b)
+    else:
+        hero.moveXY(a, b)
+
+guard = hero.pos
