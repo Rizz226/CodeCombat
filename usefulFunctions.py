@@ -35,11 +35,13 @@ def retreatFlag():
 def search()
     if item:
         it = hero.findItems()
-        x = item.pos.x
-        y = item.pos.y
+        g = item.pos.x
+        h = item.pos.y
         for i in it:
             dis = hero.distanceTo(i)
             a = i.pos.x
             b = i.pos.y
             if i.value > 2 and dis < 5:
                 hero.moveXY(a, b)
+            else:
+                hero.moveXY(g, h)
