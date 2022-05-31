@@ -19,7 +19,6 @@ def cleaveCrowd:
 # black flag outside of the fighting and your hero will rally to it when surrounded.
 def retreatFlag():
     bFlag = hero.findFlag("black")
-    tik = 0
     close = hero.findEnemies()
     for c in close:
         dist = hero.distanceTo(c)
