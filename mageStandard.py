@@ -1,3 +1,5 @@
+# Credit to Vadim Kuznetsov (vadim-job-hg) for the findTarget() function & its associated code.
+#
 # Define enemies and team:
 enemy_types = {}
 ogres types
