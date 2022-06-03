@@ -29,21 +29,37 @@ def retreatFlag():
         hero.pickUpFlag(bFlag)
         
 
-# This is for prioritized  searching & looting. it grabs the nearest item but scans
-# for anything with a value greater than two.
-def search()
-    if item:
-        it = hero.findItems()
-        g = item.pos.x
-        h = item.pos.y
-        for i in it:
-            dis = hero.distanceTo(i)
-            a = i.pos.x
-            b = i.pos.y
-            if i.value > 2 and dis < 5:
-                hero.moveXY(a, b)
+# This is for prioritized searching & looting. Based on value, it will fetch the higher of two within n distance of eachother
+# then it will break if there is an enemy within z distance from the here (optional, defaults to 5m).
+def goldHunt(n, z):
+    items = hero.findItems()
+    if items:
+        for i in items:
+            ugly = hero.findNearestEnemy()
+            it = hero.findNearestItem()
+            distI = hero.distanceTo(it)
+            distG = hero.distanceTo(i)
+            delta = distG - distI
+            if z:
+                if ugly and hero.distanceTo(ugly) < z:
+                    hero.say(ugly.type)
+                    break
+                if delta <= n and i.value < it.value:
+                    hero.move(i.pos)
+                    return
+                else:
+                    hero.move(it.pos)
+                    return
             else:
-                hero.moveXY(g, h)
+                if ugly and hero.distanceTo(ugly) < 5:
+                    hero.say(ugly.type)
+                    break
+                if delta <= n and i.value < it.value:
+                    hero.move(i.pos)
+                    return
+                else:
+                    hero.move(it.pos)
+                    return
 
 # needs the variable included in the main function but outside of any "while" loops that'll update the pos.                
 def guardArea(a, b):
