@@ -69,3 +69,13 @@ def guardArea(a, b):
         hero.moveXY(a, b)
 
 guard = hero.pos
+
+# find GCD of 2 numbers
+def euclidianGCD (a, b):
+    cycles = 0
+    while b:
+        cycles += 1
+        swap = b
+        b = a % b
+        a = swap
+    return a
